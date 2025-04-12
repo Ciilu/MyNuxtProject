@@ -24,24 +24,14 @@ function removeTodo(todo) {
 </script>
 
 <template>
-  <div id="app">
-    <v-form @submit.prevent="addTodo">
-      <v-text-field v-model="newTodo" required placeholder="new todo"></v-text-field>
-      <v-btn @click="addTodo">Add Todo</v-btn>
-    </v-form>
-    <ul>
-      <v-list v-for="todo in todos" :key="todo.id">
-        {{ todo.text }}
-        <v-btn @click="removeTodo(todo)">X</v-btn>
-      </v-list>
-    </ul>
-  </div>
+  <form @submit.prevent="addTodo">
+    <input v-model="newTodo" required placeholder="new todo">
+    <button @click="addTodo">Add Todo</button>
+  </form>
+  <ul>
+    <li v-for="todo in todos" :key="todo.id">
+      {{ todo.text }}
+      <button @click="removeTodo(todo)">X</button>
+    </li>
+  </ul>
 </template>
-
-<style>
-#app {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-</style>
